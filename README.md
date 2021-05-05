@@ -106,6 +106,11 @@ The meaning of each elements are as follows:
 - ```Validate:``` python main.py --task validate
 
 - ```Test:``` python main.py --task test
+## Run with docker
+''' Init docker
+
+
+'''
 
 ## Evaluation
 
