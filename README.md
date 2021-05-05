@@ -107,8 +107,25 @@ The meaning of each elements are as follows:
 
 - ```Test:``` python main.py --task test
 ## Run with docker
-``` Init docker
+``` 1.Prepare docker and python env
+mkdir mimincsql
+docker run --gpus all -it --entrypoint bash -v /home/tamnguyen/tvk/micmicsql:/mimicsql nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
+cd /mpqa
+apt update && apt -y upgrade
+apt install -y wget git curl unzip tmux vim
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+export PATH="/root/miniconda3/bin:$PATH" #set env for miniconda
 
+# Now restart container
+git clone https://github.com/wangpinggl/TREQS.git
+cd TREQS
+conda create -n mimicsql python=3.6 anaconda
+source activate mimicsql # conda 4.4 and above use source instead of conda
+python -m pip freeze > requirements.txt # generate requirements.txt file
+pip install -r requirements.txt
+# CUDA 10.1
+conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10.1 -c pytorch
 
 ```
 
